@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Excel Export -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    <!-- PDF Export -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Expense Tracker App</title>
+
+    <style>
+        /* Chart UI */
+        .chart-container {
+            width: 350px;
+            height: 350px;
+            margin: auto;
+        }
+
+        /* Prediction UI */
+        #prediction-box {
+            width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #f2f2f2;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .btn-export {
+            margin: 5px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Expense Tracker</h1>
+
+    <!-- INPUT SECTION -->
+    <div class="input-section">
+        <label for="category-select">Category:</label>
+        <select id="category-select">
+            <option value="Food & Beverage">Food & Beverage</option>
+            <option value="Rent">Rent</option>
+            <option value="Transport">Transport</option>
+            <option value="Relaxing">Relaxing</option>
+        </select>
+
+        <label for="amount-input">Amount:</label>
+        <input type="number" id="amount-input">
+
+        <label for="date-input">Date:</label>
+        <input type="date" id="date-input">
+
+        <button id="add-btn">Add</button>
+    </div>
+
+    <!-- EXPENSE TABLE -->
+    <div class="expenses-list">
+        <h2>Expenses List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="expnese-table-body"></tbody>
+
+            <tfoot>
+                <tr>
+                    <td>Total:</td>
+                    <td id="total-amount"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- CHART SECTION -->
+    <h2 style="text-align:center; margin-top:40px;">Expenses Chart</h2>
+
+    <div class="chart-container">
+        <canvas id="expenseChart"></canvas>
+    </div>
+
+    <!-- EXPORT BUTTONS -->
+    <div style="text-align:center; margin:30px;">
+        <button id="download-csv" class="btn-export">Download CSV</button>
+        <button id="download-excel" class="btn-export">Download Excel</button>
+        <button id="download-pdf" class="btn-export">Download PDF</button>
+    </div>
+
+    <!-- ML PREDICTION BOX -->
+    <div id="prediction-box">
+        <h3>Next Month Expense Prediction</h3>
+        <button id="predict-btn">Predict Next Month</button>
+        <p id="prediction-result" style="margin-top:10px; font-weight:bold;"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
